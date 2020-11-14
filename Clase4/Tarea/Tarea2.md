@@ -10,7 +10,7 @@ Junto a lo que desarrollamos la clase del día Jueves 12, desarrollar una lista 
 
 Tarea bonus corresponde en hacer otra lista que muestre efectivamente la lista de elementos agregados.
 
-====
+---
 
 Recuerden que el proyecto correspondiente está en el siguiente enlace:
 
@@ -33,6 +33,7 @@ Correspondiente a la Clase 3 (estados) y 4 (props).
 - Generar otro **FlatList** que contenga los elementos del carrito (permita hacer scroll)
 - Considerar el cambio de diseño. Tengan ojo con el diseño de ambos flatlist, aunque no voy a considerar en si tanto el diseño de tener 2 flatlists en una misma vista, para que tenga consideración que el primer flatlist debe tener `flexGrow: 0, height: depende_de_su_diseño` en su estilo.
 
+---
 
 #### Imagen 1
 ![Primer ejemplo](./1.png)
@@ -44,6 +45,15 @@ Correspondiente a la Clase 3 (estados) y 4 (props).
 ![Primer ejemplo](./3.png)
 
 ## Parte del bonus
+
+Para los titulos `Platos` y `Pedidos`, FlatList tiene un prop llamado `ListHeaderComponent` como función, es decir:
+
+```js
+<FlatList
+  ...
+  ListHeaderComponent={() => (<Componente />)}
+/>
+```
 
 #### Imagen 4
 ![Primer ejemplo](./4.png)
