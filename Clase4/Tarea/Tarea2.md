@@ -35,13 +35,13 @@ Correspondiente a la Clase 3 (estados) y 4 (props).
 
 ---
 
-#### Imagen 1
+#### Imagen 1 (imágenes con botón agregar al carro)
 ![Primer ejemplo](./1.png)
 
-#### Imagen 2
+#### Imagen 2 (alerta al presionar "agregar al carro")
 ![Primer ejemplo](./2.png)
 
-#### Imagen 3
+#### Imagen 3 (alerta al presionar "Vaciar Carrito")
 ![Primer ejemplo](./3.png)
 
 ## Parte del bonus
