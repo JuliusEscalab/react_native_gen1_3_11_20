@@ -1,21 +1,17 @@
 // @flow
 import PropTypes from 'prop-types';
-import React, {PureComponent} from 'react';
-import {Button} from 'react-native';
+import React from 'react';
 import Header from '../components/Header';
 import MovieList from '../components/MovieList';
 
-export default class Home extends PureComponent {
-  render() {
-    const {movies} = this.props;
-    return (
-      <>
-        <Header title="Cartelera" />
-        <MovieList movies={movies} />
-      </>
-    );
-  }
-}
+const Home = ({movies}) => (
+  <>
+    <Header title="Cartelera" />
+    <MovieList movies={movies} />
+  </>
+);
+
+export default Home;
 
 Home.propTypes = {
   movies: PropTypes.array,

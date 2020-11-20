@@ -1,17 +1,22 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import Chip from './Chip';
 
-export default class Filters extends Component {
-  render() {
-    const {moviesGenres, movieGenreOnPress} = this.props;
-    const genresChips = moviesGenres.map((genre, index) => (
-      <Chip onPress={movieGenreOnPress} key={`${index}-genre`} value={genre} />
-    ));
-    return (
-      <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-        {genresChips}
-      </View>
-    );
-  }
-}
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
+    marginBottom: 20,
+  },
+});
+
+const Filters = ({moviesGenres, movieGenreOnPress}) => {
+  const genresChips = moviesGenres.map((genre, index) => (
+    <Chip onPress={movieGenreOnPress} key={`${index}-genre`} value={genre} />
+  ));
+
+  return <View style={styles.container}>{genresChips}</View>;
+};
+
+export default Filters;

@@ -3,19 +3,14 @@ import PropTypes from 'prop-types';
 import {Image, View, StyleSheet, Text, Animated} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Rating from './Rating';
+import MovieImage from './MovieImage';
+import MovieFullScreenImage from './MovieFullScreenImage';
 
 const styles = StyleSheet.create({
   container: {
     borderRadius: 15,
     backgroundColor: '#ecf0f1',
     marginBottom: 20,
-  },
-  image: {
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
-    height: 300,
-    width: '100%',
-    backgroundColor: '#34495e',
   },
   textColor: {
     color: '#34495e',
@@ -58,6 +53,7 @@ export default class MovieCard extends Component {
       starRating: 1,
       fadeAnimation: new Animated.Value(0),
       like: false,
+      fullScreenImage: false,
     };
   }
 
@@ -81,20 +77,32 @@ export default class MovieCard extends Component {
     }).start();
   };
 
+  toggleFullScreenImage = () =>
+    this.setState(({fullScreenImage}) => ({fullScreenImage: !fullScreenImage}));
+
   render() {
     const {posterurl, title, year, imdbRating} = this.props;
-    const {validImage, starRating, fadeAnimation, like} = this.state;
+    const {
+      validImage,
+      starRating,
+      fadeAnimation,
+      like,
+      fullScreenImage,
+    } = this.state;
+
     return (
       <Animated.View style={[styles.container, {opacity: fadeAnimation}]}>
-        <Image
-          style={styles.image}
-          source={
-            validImage
-              ? {uri: posterurl}
-              : require('../assets/no_image_available.jpg')
-          }
-          resizeMode="cover"
+        {fullScreenImage && (
+          <MovieFullScreenImage
+            posterurl={posterurl}
+            onPress={this.toggleFullScreenImage}
+          />
+        )}
+        <MovieImage
+          validImage={validImage}
+          posterurl={posterurl}
           onError={this.invalid}
+          imageOnLongPress={this.toggleFullScreenImage}
         />
         <Text style={[styles.name, styles.textColor]}>{title}</Text>
         <View style={styles.subtitle}>

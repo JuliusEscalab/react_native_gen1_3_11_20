@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
+import CustomText from './CustomText';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,16 +20,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Header extends Component {
-  render() {
-    const {title} = this.props;
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>{title}</Text>
-      </View>
-    );
-  }
-}
+const Header = ({title = 'Titulo por defecto'}) => (
+  <View style={styles.container}>
+    <CustomText style={styles.title} italic weight="normal" color="green">
+      {title}
+    </CustomText>
+  </View>
+);
+
+export default Header;
 
 Header.propTypes = {
   title: PropTypes.string,

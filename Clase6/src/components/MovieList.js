@@ -9,6 +9,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import FilterButton from './FilterButton';
+import FilterButtons from './FilterButtons';
 import Filters from './Filters';
 import MovieCard from './MovieCard';
 
@@ -27,6 +28,8 @@ const styles = StyleSheet.create({
 });
 
 export default class MovieList extends PureComponent {
+  flatlistRef = null;
+
   constructor(props) {
     super(props);
 
@@ -55,12 +58,18 @@ export default class MovieList extends PureComponent {
     const filteredMovies = movies.filter((movie) =>
       movie.genres.includes(genre),
     );
-    this.setState({movies: filteredMovies, modalActive: false});
+    this.setState(
+      {movies: filteredMovies, modalActive: false},
+      this.movieListScrollToTop,
+    );
   };
+
+  movieListScrollToTop = () =>
+    this.flatlistRef.scrollToOffset({animated: true, offset: 0});
 
   clearFilters = () => {
     const {movies} = this.props;
-    this.setState({movies, modalActive: false});
+    this.setState({movies, modalActive: false}, this.movieListScrollToTop);
   };
 
   toggleModal = () =>
@@ -71,6 +80,9 @@ export default class MovieList extends PureComponent {
     return (
       <>
         <FlatList
+          ref={(movieListFlatlistRef) =>
+            (this.flatlistRef = movieListFlatlistRef)
+          }
           style={styles.container}
           data={movies}
           keyExtractor={({poster}) => poster}
@@ -93,26 +105,10 @@ export default class MovieList extends PureComponent {
               movieGenreOnPress={this.applyFilter}
               moviesGenres={moviesGenres}
             />
-            <TouchableOpacity
-              onPress={this.toggleModal}
-              style={{
-                padding: 10,
-                backgroundColor: '#e74c3c',
-                justifyContent: 'center',
-                alignSelf: 'center',
-              }}>
-              <Text style={{color: 'white'}}>Cerrar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={this.clearFilters}
-              style={{
-                padding: 10,
-                backgroundColor: '#e74c3c',
-                justifyContent: 'center',
-                alignSelf: 'center',
-              }}>
-              <Text style={{color: 'white'}}>Limpiar Filtro</Text>
-            </TouchableOpacity>
+            <FilterButtons
+              clearFilters={this.clearFilters}
+              toggleModal={this.toggleModal}
+            />
           </SafeAreaView>
         </Modal>
       </>

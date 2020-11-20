@@ -1,22 +1,26 @@
-import React, {Component} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import React from 'react';
+import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 
-export default class Chip extends Component {
-  render() {
-    const {value, onPress} = this.props;
-    return (
-      <TouchableOpacity
-        style={{
-          padding: 5,
-          backgroundColor: 'gray',
-          margin: 5,
-          alignSelf: 'center',
-          borderRadius: 10,
-        }}
-        disabled={!onPress}
-        onPress={() => onPress(value)}>
-        <Text style={{color: 'white'}}>{value}</Text>
-      </TouchableOpacity>
-    );
-  }
-}
+const styles = StyleSheet.create({
+  toucheable: {
+    padding: 5,
+    backgroundColor: 'gray',
+    margin: 5,
+    alignSelf: 'center',
+    borderRadius: 10,
+  },
+  text: {
+    color: 'white',
+  },
+});
+
+const Chip = ({value, onPress}) => (
+  <TouchableOpacity
+    style={styles.toucheable}
+    disabled={!onPress}
+    onPress={() => onPress(value)}>
+    <Text style={styles.text}>{value}</Text>
+  </TouchableOpacity>
+);
+
+export default Chip;
