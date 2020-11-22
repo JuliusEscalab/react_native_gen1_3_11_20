@@ -7,7 +7,7 @@ Junto con el desarrollo de la tarea 2, solamente les pediré que ambos component
 * La tarjeta de cada plato
 * Carrito
 
-Sean desarrollados como componentes funcionales
+Ambos marcados con ciruclos rojos, sean desarrollados como componentes funcionales.
 
 #### Imagen 1 (imágenes con botón agregar al carro)
 ![Desarrollo tarea 3](./1.png)
