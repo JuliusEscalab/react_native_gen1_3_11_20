@@ -114,8 +114,8 @@ export default class Home extends Component {
       <ScrollView style={styles.container}>
         <Button
           color="yellow"
-          onPress={() => this.fetchData()}
-          title="Llamar a axios"
+          onPress={() => this.fetchCountries()}
+          title="Fetch de Países"
         />
         <DropdownPicker countries={countries} onSelect={this.selectCountry} />
         <Loading isLoading={isLoading} color={colors.white}>
