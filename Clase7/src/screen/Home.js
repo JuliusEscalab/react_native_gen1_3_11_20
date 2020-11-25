@@ -44,7 +44,7 @@ export default class Home extends Component {
     const formattedCountries = JSON.parse(
       await AsyncStorage.getItem('countries'),
     );
-    this.setState({countries: formattedCountries});
+    this.setState({countries: formattedCountries || []});
   };
 
   fetchCountries = async () => {
