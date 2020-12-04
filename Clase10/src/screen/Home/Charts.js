@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, ScrollView} from 'react-native';
-import LineChartData from '../components/Commons/LineChart';
-import colors from '../config/colors';
+import LineChartData from '../../components/Commons/LineChart';
+import colors from '../../config/colors';
 
 const Charts = ({
   navigation,

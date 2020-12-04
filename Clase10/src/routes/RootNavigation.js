@@ -8,7 +8,7 @@ const RootStack = createStackNavigator();
 
 const RootNavigation = () => (
   <NavigationContainer>
-    <RootStack.Navigator>
+    <RootStack.Navigator headerMode="none">
       <RootStack.Screen name="Tabs" component={HomeTab} />
       <RootStack.Screen name="Screens" component={Screen} />
     </RootStack.Navigator>
