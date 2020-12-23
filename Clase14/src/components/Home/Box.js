@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 });
 
 const Box = ({variableData, variableName, color}) => (
-  <View style={styles.box}>
+  <View testID="box-container" style={styles.box}>
     <Text style={[styles.totalText, {color}]}>{variableData}</Text>
     <Text style={[styles.totalText, {color}]}>{variableName}</Text>
   </View>

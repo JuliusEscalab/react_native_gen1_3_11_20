@@ -39,6 +39,7 @@ const TextInput = ({
       <Text style={[styles.label, {color: textColor}]}>{labelTag}</Text>
       <View style={styles.inputContainer}>
         <TextInputRN
+          testID="TextInput"
           value={value}
           style={styles.textInput}
           placeholder={placeholder}
